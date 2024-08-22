@@ -1,0 +1,303 @@
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname L3_BRU_2
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$smgC$yh7rq6XvKdycZdqh6xF/L/
+!
+username root password 7 1500040310
+no aaa new-model
+system mtu routing 1500
+ip subnet-zero
+ip routing
+ip domain-name groep2.com
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-1179245824
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1179245824
+ revocation-check none
+ rsakeypair TP-self-signed-1179245824
+!
+!
+crypto pki certificate chain TP-self-signed-1179245824
+ certificate self-signed 01
+  3082024B 308201B4 A0030201 02020101 300D0609 2A864886 F70D0101 04050030
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 31313739 32343538 3234301E 170D3933 30333031 30303030
+  35395A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D31 31373932
+  34353832 3430819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281
+  8100DFB8 3CFF41EA 3F124C01 A716CF7D 2C59CDD0 49D70C23 07C95D26 96AD6B6F
+  1FF58ECE 1592CC62 8319AC98 ED0B5E6C 246318B1 614455F0 CCF1B84A F46131EB
+  7F6A8D96 AC5385CC 3EF67614 BEDE3D4F 3091354F E124224B 52F52037 74BB2665
+  8A94717F 2A14B0D2 7A226106 09D8C5BC B41B3576 860D2B88 3BC6EAC7 CBAC7273
+  56E90203 010001A3 73307130 0F060355 1D130101 FF040530 030101FF 301E0603
+  551D1104 17301582 134C335F 4252555F 322E6772 6F657032 2E636F6D 301F0603
+  551D2304 18301680 14228205 53685CB6 587C8DD6 837D584B CA98C732 AC301D06
+  03551D0E 04160414 22820553 685CB658 7C8DD683 7D584BCA 98C732AC 300D0609
+  2A864886 F70D0101 04050003 81810013 86A75978 5FF82D26 CBDB11F6 3B05A408
+  1485A223 0FBC41B0 F397EF11 109D65F7 A8039E49 39706A16 C43AE8B8 9BBFCC32
+  BBC76D68 68DC474F 7A44C52F D5321B4A 9368C117 68762847 3C1BB09C 1F69060E
+  903A7CA6 9D1E5212 31E9EAD4 2462B8DD 7ABAA411 D221AD11 1B4FD462 C192C8C2
+  418EB72C D7DB52FF 1824E6F6 4159B6
+  quit
+!
+!
+!
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+spanning-tree vlan 1-200 priority 28672
+!
+vlan internal allocation policy ascending
+!
+!
+!
+!
+interface Port-channel1
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 66
+ switchport mode trunk
+!
+interface FastEthernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 66
+ switchport mode trunk
+ channel-group 1 mode passive
+!
+interface FastEthernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 66
+ switchport mode trunk
+ channel-group 1 mode passive
+!
+interface FastEthernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 66
+ switchport mode trunk
+!
+interface FastEthernet0/4
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 66
+ switchport mode trunk
+!
+interface FastEthernet0/5
+ no switchport
+ ip address 10.8.0.6 255.255.255.252
+ ip ospf network point-to-point
+!
+interface FastEthernet0/6
+ shutdown
+!
+interface FastEthernet0/7
+ shutdown
+!
+interface FastEthernet0/8
+ shutdown
+!
+interface FastEthernet0/9
+ shutdown
+!
+interface FastEthernet0/10
+ shutdown
+!
+interface FastEthernet0/11
+ shutdown
+!
+interface FastEthernet0/12
+ shutdown
+!
+interface FastEthernet0/13
+ shutdown
+!
+interface FastEthernet0/14
+ shutdown
+!
+interface FastEthernet0/15
+ shutdown
+!
+interface FastEthernet0/16
+ shutdown
+!
+interface FastEthernet0/17
+ shutdown
+!
+interface FastEthernet0/18
+ shutdown
+!
+interface FastEthernet0/19
+ shutdown
+!
+interface FastEthernet0/20
+ shutdown
+!
+interface FastEthernet0/21
+ shutdown
+!
+interface FastEthernet0/22
+ shutdown
+!
+interface FastEthernet0/23
+ shutdown
+!
+interface FastEthernet0/24
+ shutdown
+!
+interface FastEthernet0/25
+ shutdown
+!
+interface FastEthernet0/26
+ shutdown
+!
+interface FastEthernet0/27
+ shutdown
+!
+interface FastEthernet0/28
+ shutdown
+!
+interface FastEthernet0/29
+ shutdown
+!
+interface FastEthernet0/30
+ shutdown
+!
+interface FastEthernet0/31
+ shutdown
+!
+interface FastEthernet0/32
+ shutdown
+!
+interface FastEthernet0/33
+ shutdown
+!
+interface FastEthernet0/34
+ shutdown
+!
+interface FastEthernet0/35
+ shutdown
+!
+interface FastEthernet0/36
+ shutdown
+!
+interface FastEthernet0/37
+ shutdown
+!
+interface FastEthernet0/38
+ shutdown
+!
+interface FastEthernet0/39
+ shutdown
+!
+interface FastEthernet0/40
+ shutdown
+!
+interface FastEthernet0/41
+ shutdown
+!
+interface FastEthernet0/42
+ shutdown
+!
+interface FastEthernet0/43
+ shutdown
+!
+interface FastEthernet0/44
+ shutdown
+!
+interface FastEthernet0/45
+ shutdown
+!
+interface FastEthernet0/46
+ shutdown
+!
+interface FastEthernet0/47
+ shutdown
+!
+interface FastEthernet0/48
+ switchport access vlan 100
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet0/1
+ shutdown
+!
+interface GigabitEthernet0/2
+ shutdown
+!
+interface GigabitEthernet0/3
+ shutdown
+!
+interface GigabitEthernet0/4
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ ip address 10.3.1.253 255.255.254.0
+ ip helper-address 10.3.3.252
+ standby 10 ip 10.3.1.254
+ standby 10 preempt
+!
+interface Vlan20
+ ip address 10.3.2.253 255.255.255.0
+ ip helper-address 10.3.3.252
+ standby 20 ip 10.3.2.254
+ standby 20 preempt
+!
+interface Vlan66
+ ip address 10.7.0.2 255.255.255.0
+!
+interface Vlan100
+ ip address 10.3.3.253 255.255.255.0
+ standby 100 ip 10.3.3.254
+ standby 100 preempt
+!
+interface Vlan200
+ ip address 10.3.4.253 255.255.255.0
+ standby 200 ip 10.3.4.254
+ standby 200 preempt
+!
+router ospf 1
+ router-id 1.1.1.1
+ log-adjacency-changes
+ passive-interface FastEthernet0/3
+ network 10.3.0.0 0.0.1.255 area 0
+ network 10.3.2.0 0.0.0.255 area 0
+ network 10.3.3.0 0.0.0.255 area 0
+ network 10.3.4.0 0.0.0.255 area 0
+ network 10.7.0.0 0.0.0.255 area 0
+ network 10.8.0.0 0.0.0.3 area 0
+ network 10.8.0.4 0.0.0.3 area 0
+!
+ip default-gateway 10.3.3.254
+ip classless
+ip http server
+ip http secure-server
+!
+!
+!
+control-plane
+!
+banner motd ^CCGeen toegang^C
+!
+line con 0
+line vty 0 4
+ login
+line vty 5 15
+ password 7 00071A150754
+ login local
+ transport input ssh
+!
+end
