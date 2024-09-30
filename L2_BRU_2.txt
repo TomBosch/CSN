@@ -1,1 +1,3 @@
-Hier is iets aangepast.
+#Configuration L2_BRU_2
+
+hostname L2_BRU_2
